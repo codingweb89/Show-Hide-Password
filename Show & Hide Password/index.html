@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="font-awesome.css">
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show, Hide password</title>
+</head>
+<body>
+
+<form>
+  <div>
+    <input type="password" id="password">
+    <label for="password">Password</label>
+    <img src="eye-open.png" alt="" id="ctrleye">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
+
+
+<script>
+
+const ctrlEye = document.getElementById("ctrleye");
+const password = document.getElementById("password");
+const label = document.querySelector("label");
+
+function checkType() {
+  if(password.type === "password") {
+    password.type = "text";
+    // ctrlEye.classList.remove("fa-eye")
+    ctrlEye.src = "eye-close.png";
+  }else {
+    password.type = "password";
+    // ctrlEye.classList.add("fa-eye")
+    // ctrlEye.classList.remove("fa-eye-slash")
+    ctrlEye.src = "eye-open.png";
+  }
+}
+
+ctrlEye.addEventListener("click", checkType)
+
+password.addEventListener("focusout", e => {
+  if(!password.value) {
+    label.classList.remove("active");
+
+  }else {
+    label.classList.add("active")
+  }
+})
+
+</script>
+
+</body>
+</html>
